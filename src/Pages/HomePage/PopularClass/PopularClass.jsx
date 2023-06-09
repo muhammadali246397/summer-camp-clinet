@@ -16,7 +16,7 @@ const PopularClass = () => {
             subTitle={'-----Class-----'}
             title={'Our Popular Classes'}
             ></Title>
-            <div  className='grid grid-cols-3 gap-4'>
+            <div  className='grid grid-cols-3 gap-4 mt-10'>
                 {
                     classes.map(items => <Card
                         key={items._id}

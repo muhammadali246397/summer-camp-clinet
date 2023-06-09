@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Title from '../../Share/ReuseTitle/Title';
+import Card from '../../Share/Card/Card';
 
 const PopularClass = () => {
     const [classes,setClasses] = useState([]);
@@ -15,7 +16,16 @@ const PopularClass = () => {
             subTitle={'-----Class-----'}
             title={'Our Popular Classes'}
             ></Title>
-            <h2>popular classes {classes.length}</h2>
+            <div  className='grid grid-cols-3 gap-4'>
+                {
+                    classes.map(items => <Card
+                        key={items._id}
+                        img={items.classImg}
+                        name={items.className}
+                        price={items.price}
+                        ></Card>)
+                }
+            </div>
         </div>
     );
 };

@@ -9,6 +9,7 @@ const Navbar = () => {
        <li><NavLink className='font-bold hover:text-white' to='/class'>CLASSES</NavLink></li>
        <li><NavLink className='font-bold hover:text-white' to='/insntractor'>INSTRACTORS</NavLink></li>
        <li><NavLink className='font-bold hover:text-white' to='/dashborad'>DASHBOARD</NavLink></li>
+       <li><NavLink className='font-bold hover:text-white' to='/login'>LOGIN</NavLink></li>
     </>
     return (
         <div className=''>

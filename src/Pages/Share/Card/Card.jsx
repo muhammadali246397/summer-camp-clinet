@@ -11,9 +11,9 @@ const Card = ({img,name,price,className }) => {
                         <div>
                             <figure className='h-60'><img style={{height:"300px"}} className=' w-full' src={img} alt="Shoes" /></figure>
                             <div className="text-center mt-4 ">
-                                <h2 className="font-bold text-xl text-orange-600">{name}</h2>
+                                <h2 className="font-bold text-xl text-orange-600 mt-20">{name}</h2>
                                {
-                                price? <p className='mt-2'>Price : ${price}</p>: <p className='mt-2'>Class Name : {className}</p>
+                                price? <p className='mt-2'>Price : ${price}</p>: <p className='mt-2'>Class : {className}</p>
                                }
                             </div>
                         </div>

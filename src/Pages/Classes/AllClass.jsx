@@ -12,11 +12,6 @@ const AllClass = () => {
             return result.json()
         }
     })
-    // const { data: instractor = [], refetch } = useQuery(['instractor'], async () => {
-    //     const result = await fetch('http://localhost:5000/instructor')
-    //     return result.json();
-    // })
-
     console.log(instractor)
     return (
         <div className='my-20'>

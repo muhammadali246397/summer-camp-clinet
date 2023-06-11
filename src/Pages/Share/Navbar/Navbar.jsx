@@ -1,15 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
-import user from '../../../assets/user.png'
+// import user from '../../../assets/user.png'
+import { AuthContext } from '../../../AuthProvider/AuthProvider';
+import { FaSignOutAlt } from 'react-icons/fa';
 
 const Navbar = () => {
+    const {user,logout} = useContext(AuthContext)
+
+    const handlelogOUt = () => {
+        logout()
+    }
+    
+    console.log(user)
     const navitem = <>
        <li><NavLink className='font-bold hover:text-white' to='/'>HOME</NavLink></li>
        <li><NavLink className='font-bold hover:text-white' to='/class'>CLASSES</NavLink></li>
        <li><NavLink className='font-bold hover:text-white' to='/insntractor'>INSTRACTORS</NavLink></li>
-       <li><NavLink className='font-bold hover:text-white' to='/dashborad'>DASHBOARD</NavLink></li>
-       <li><NavLink className='font-bold hover:text-white' to='/login'>LOGIN</NavLink></li>
+       {
+        user?<>
+        <li><NavLink className='font-bold hover:text-white' to='/dashborad'>DASHBOARD</NavLink></li>
+       <button onClick={handlelogOUt} className='text-orange-400 text-lg hover:text-white ml-2'><FaSignOutAlt></FaSignOutAlt></button>
+        </> : 
+        <li><NavLink className='font-bold hover:text-white' to='/login'>LOGIN</NavLink></li>
+       }
+       
+      
     </>
     return (
         <div className=''>
@@ -31,7 +47,9 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="">
-                    <img className='w-16 rounded-full ml-4' src={user} alt="" />
+                   {
+                    user? <img className='w-16 h-16 rounded-full ml-4' src={user.photoURL} alt="" />:<></>
+                   }
                 </div>
             </div>
         </div>

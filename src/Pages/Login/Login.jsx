@@ -1,19 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logimg from '../../assets/login/log.png'
 import log from '../../assets/login/logbg.png'
 import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Login = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const navigate = useNavigate();
+    const {signIn} = useContext(AuthContext)
+    const { register,reset, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = data => {
+        signIn(data.email,data.password)
+        .then(result => {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1000
+              })
+              navigate('/')
+            reset()
+        })
+        .catch(error => console.log(error))
+    };
     console.log(errors);
 
     return (
         <div>
             <div className="" style={{ backgroundImage: `url(${log})`,backgroundRepeat:'no-repeat' }}>
-
                 <div className='w-full flex items-center justify-center'>
                     <div className="w-1/3 border-2 p-10 mb-12 mt-[25vh]">
                         <h3 className='text-3xl text-center font-semibold'>Login</h3>
@@ -30,7 +47,7 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text font-bold text-lg">Password <span className='text-warning'>*</span> </span>
                                 </label>
-                                <input className="input input-bordered w-full " type="text" placeholder="Password..." {...register("password", { required: true, maxLength: 80 })} />
+                                <input className="input input-bordered w-full " type="password" placeholder="Password..." {...register("password", { required: true, maxLength: 80 })} />
                                 {errors.password && <span>This field is required</span>}
                             </div>
 

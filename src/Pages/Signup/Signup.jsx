@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import log from '../../assets/login/logbg.png'
 import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Signup = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
-    console.log(errors);
+    const {createUser, updateUserProfile} = useContext(AuthContext)
+    const { register,reset, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = data => {
+        createUser(data.email,data.password)
+        .then(result => {
+            const user = result.user;
+            updateUserProfile(data.name,data.photo)
+            .then(() => {
+                reset()
+                alert('signin complete')
+            })
+            .catch(error => console.log(error))
+
+        })
+        .catch(error => console.log(error.message))
+    };
+    
     return (
         <div>
             <div className="" style={{ backgroundImage: `url(${log})`, backgroundRepeat: 'no-repeat' }}>

@@ -2,10 +2,12 @@ import React, { useContext } from 'react';
 import log from '../../assets/login/logbg.png'
 import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Signup = () => {
+    const navigate = useNavigate();
     const {createUser, updateUserProfile} = useContext(AuthContext)
     const { register,reset, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
@@ -15,7 +17,14 @@ const Signup = () => {
             updateUserProfile(data.name,data.photo)
             .then(() => {
                 reset()
-                alert('signin complete')
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Resister successfully',
+                    showConfirmButton: false,
+                    timer: 1000
+                  })
+                  navigate('/')
             })
             .catch(error => console.log(error))
 

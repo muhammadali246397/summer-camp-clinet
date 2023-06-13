@@ -5,9 +5,13 @@ import { AuthContext } from '../../AuthProvider/AuthProvider'
 const ClassCard = ({ ins }) => {
     const { user } = useContext(AuthContext)
     console.log(user)
+    console.log()
+
     const { _id, available, classImg, className, email, image, instructorName, price } = ins
+
     const [disabled, setDisabled] = useState(true)
-    if (ins.available < 1) {
+
+    if (ins.available == 0) {
         setDisabled(false)
     }
     const addClass = (cls) => {

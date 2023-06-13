@@ -46,17 +46,17 @@ const SelectedClasses = () => {
             }
           })
     }
-
     return (
         <div className='my-14'>
             <Title
                 subTitle={'----- Class List -----'}
                 title={'My Selected Classes'}
             ></Title>
+            <h2 className='text-4xl my-4'>Total Class : {addClass.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
-                    <thead>
+                    <thead className='text-lg'>
                         <tr>
                             <th>
                                 <label>
@@ -100,12 +100,8 @@ const SelectedClasses = () => {
                                 </th>
                             </tr>)
                         }
-
-
-                    </tbody>
-
-
-                </table>
+                  </tbody>
+            </table>
             </div>
         </div>
     );

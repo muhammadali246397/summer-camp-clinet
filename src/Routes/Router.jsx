@@ -10,6 +10,8 @@ import DashLayout from "../Pages/Dashboard/DashLayout/DashLayout";
 import SelectedClasses from "../Pages/Dashboard/StudantDash/SelectedClass/SelectedClasses";
 import Enrolledclass from "../Pages/Dashboard/StudantDash/Enrolled/Enrolledclass";
 import PaymentHistory from "../Pages/Dashboard/StudantDash/PaymentHistory/PaymentHistory";
+import PostClass from "../Pages/Dashboard/InstructorDash/PostClass/PostClass";
+import AllInstructor from "../Pages/Instructor/AllInstructor";
 
   const router = createBrowserRouter([
     {
@@ -31,6 +33,10 @@ import PaymentHistory from "../Pages/Dashboard/StudantDash/PaymentHistory/Paymen
         {
           path:'signup',
           element:<Signup></Signup>
+        },
+        {
+          path:'insntractor',
+          element:<AllInstructor></AllInstructor>
         }
       ]
     },
@@ -49,6 +55,10 @@ import PaymentHistory from "../Pages/Dashboard/StudantDash/PaymentHistory/Paymen
         {
           path:'dashborad/history',
           element:<PaymentHistory></PaymentHistory>
+        },
+        {
+          path:'dashborad/postclass',
+          element:<PostClass></PostClass>
         }
       ]
     }

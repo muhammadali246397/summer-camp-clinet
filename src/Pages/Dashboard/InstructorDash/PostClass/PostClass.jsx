@@ -21,7 +21,13 @@ const PostClass = () => {
         })
        .then(res => res.json())
        .then(datas => {
-        console.log(datas)
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'pending',
+            showConfirmButton: false,
+            timer: 1000
+        })
         if(datas.insertedId){
             reset()
             Swal.fire({

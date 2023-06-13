@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+
 import { Slide } from 'react-awesome-reveal';
 
 const Card = ({img,name,price,className }) => {

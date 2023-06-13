@@ -8,22 +8,39 @@ import Swal from 'sweetalert2';
 
 const Signup = () => {
     const navigate = useNavigate();
-    const {createUser, updateUserProfile} = useContext(AuthContext)
+    const {createUser, updateUserProfile,googlesignin} = useContext(AuthContext)
     const { register,reset, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         createUser(data.email,data.password)
         .then(result => {
             const user = result.user;
+            console.log(user.email)
             updateUserProfile(data.name,data.photo)
             .then(() => {
-                reset()
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Resister successfully',
-                    showConfirmButton: false,
-                    timer: 1000
-                  })
+                const userInfo = {userEmail:user.email,name:user.displayName}
+
+                fetch('http://localhost:5000/users',{
+                    method:"POST",
+                    headers:{
+                        'content-type':'application/json'
+                    },
+                    body:JSON.stringify(userInfo)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if(data.insertedId){
+                        reset()
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Resister successfully',
+                            showConfirmButton: false,
+                            timer: 1000
+                          })
+                    }
+                })
+             
                   navigate('/')
             })
             .catch(error => console.log(error))
@@ -31,6 +48,37 @@ const Signup = () => {
         })
         .catch(error => console.log(error.message))
     };
+
+    const googlesign = () => {
+        googlesignin()
+        .then((result ) => {
+            const logedinUser = result.user;
+            const userInfo = {userEmail:logedinUser.email,name:logedinUser.displayName}
+            console.log(userInfo)
+            fetch('http://localhost:5000/users',{
+                method:"POST",
+                headers:{
+                    'content-type':'application/json'
+                },
+                body:JSON.stringify(userInfo)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if(data.insertedId){
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Resister successfully',
+                        showConfirmButton: false,
+                        timer: 1000
+                      })
+                }
+            })
+        })
+        
+        .catch(error => console.log(error))
+    }
     
     return (
         <div>
@@ -90,7 +138,7 @@ const Signup = () => {
 
                         </div>
                         <div className='text-center'>
-                            <button className='btn btn-circle btn-outline hover:text-orange-600'><FaGoogle></FaGoogle></button>
+                            <button onClick={googlesign} className='btn btn-circle btn-outline hover:text-orange-600'><FaGoogle></FaGoogle></button>
                         </div>
                     </div>
                 </div>

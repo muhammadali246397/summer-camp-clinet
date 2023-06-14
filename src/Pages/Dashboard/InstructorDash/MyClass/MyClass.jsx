@@ -6,13 +6,16 @@ import Title from '../../../Share/ReuseTitle/Title';
 const MyClass = () => {
     const [clases, setClases] = useState()
     const { user } = useContext(AuthContext)
+    const token = localStorage.getItem('access-token');
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/myclass?email=${user?.email}`)
+        axios.get(`http://localhost:5000/myclass?email=${user?.email}`,{
+            headers:{
+                authorization:`bearer ${token}`
+            }
+        })
             .then((response) => {
-                // Handle successful response
                 const data = response.data
-               
                 setClases(data)
             })
     }, [user])
@@ -24,7 +27,7 @@ const MyClass = () => {
             title={'My All Classes List'}
             ></Title>
             <div>
-            <h2 className='text-4xl my-4'>Total Class : {clases.length}</h2>
+            <h2 className='text-4xl my-4'>Total Class : {clases?.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
@@ -44,7 +47,7 @@ const MyClass = () => {
                     </thead>
                     <tbody>
                         {
-                            clases.map((clas,index) => <tr key={clas._id}>
+                            clases?.map((clas,index) => <tr key={clas._id}>
                                 <th>
                                     <label>
                                     {index + 1}

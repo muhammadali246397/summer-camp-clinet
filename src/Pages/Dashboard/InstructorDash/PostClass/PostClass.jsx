@@ -9,8 +9,8 @@ const PostClass = () => {
     
     const { register,reset, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data) => {
-       const {className,available, classImg,status, email, instructorName, price} = data
-        const result = {className,available, classImg,status, email, instructorName, price,image:user?.photoURL}
+       const {className,available, classImg, email, instructorName, price} = data
+        const result = {className,available, classImg,status:'pending', email, instructorName, price,image:user?.photoURL}
         fetch('http://localhost:5000/class',{
             method:"POST",
             headers:{
@@ -90,13 +90,13 @@ const PostClass = () => {
                             <input className="input input-bordered w-full " type="number" placeholder="Available seats..." {...register("available", { required: true, maxLength: 80 })} />
                             {errors.available && <span>This field is required</span>}
                         </div>
-                        <div style={{ width: '80%' }} className="form-control">
+                        {/* <div style={{ width: '80%' }} className="form-control">
                             <label className="label">
                                 <span className="label-text font-bold text-lg">Status <span className='text-warning'>*</span> </span>
                             </label>
                             <input defaultValue='pending' className="input input-bordered w-full " type="text" placeholder="Price..." {...register("status", { required: true, maxLength: 80 })} />
                             {errors.status && <span>This field is required</span>}
-                        </div>
+                        </div> */}
                     </div>
                     <div className="form-control w-full">
                         <label className="label">

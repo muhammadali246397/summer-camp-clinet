@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 
-const TableBody = ({user,refetch}) => {
-
-    const [disabled, setDisaled] = useState(false)
-    const [insdisabled, setInsDisabled] = useState(false)
-
+const TableBody = ({user,refetch,index}) => {
+    
+    const [disabled, setDisaled] = useState(user.role === 'admin' )
+    const [insdisabled, setInsDisabled] = useState(user.role === 'instructor')
+   
     const makeAdmin = (user) => {
-
-        console.log(user)
+        console.log(user.role)
+       
+       
         const data = user._id
         fetch(`http://localhost:5000/users/admin/${data}`,{
             method:'PATCH'
@@ -16,10 +17,10 @@ const TableBody = ({user,refetch}) => {
         .then(res => res.json())
         .then(data => {
             refetch();
-           console.log(user.role)
+          
           
             if(data.modifiedCount){
-                setDisaled(true)
+               setDisaled(true)
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -57,7 +58,7 @@ const TableBody = ({user,refetch}) => {
     return (
         
             <tr>
-                <th>1</th>
+                <th>{index+1}</th>
                 <td>{user.name}</td>
                 <td>{user.userEmail}</td>
                 <td>{user?.role}</td>

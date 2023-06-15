@@ -4,10 +4,15 @@ import { useQuery } from '@tanstack/react-query';
 import ClassTable from './ClassTable';
 
 const ManageClass = () => {
+    const token = localStorage.getItem('access-token')
     const { data: allclasses = [], refetch } = useQuery({
         queryKey: ['allclasses'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/postclass')
+            const res = await fetch('http://localhost:5000/postclass',{
+                headers:{
+                    authorization:`bearer ${token}`
+                }
+            })
             return res.json()
         }
 
@@ -42,7 +47,7 @@ const ManageClass = () => {
                         </thead>
                         <tbody>
                             {
-                                allclasses.map((classes,index) => <ClassTable 
+                                allclasses?.map((classes,index) => <ClassTable 
                                 key={classes._id}
                                 classes={classes}
                                 index={index}

@@ -16,7 +16,7 @@ const UseAdmin = () => {
         return res.json()
     }
  })
- console.log(isAdmin)
+
  return {isAdmin,isLoading}
 };
 

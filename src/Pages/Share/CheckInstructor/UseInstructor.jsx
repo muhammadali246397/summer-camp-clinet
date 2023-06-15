@@ -16,7 +16,7 @@ const UseInstructor = () => {
         return res.json()
     }
  })
- console.log(isInstructor)
+
  return {isInstructor,isLoading}
 };
 

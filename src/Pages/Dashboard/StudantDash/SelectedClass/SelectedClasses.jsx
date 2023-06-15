@@ -7,11 +7,15 @@ import Swal from 'sweetalert2';
 
 const SelectedClasses = () => {
     const { user } = useContext(AuthContext)
-
+    const token = localStorage.getItem('access-token')
     const { data: addClass = [], refetch } = useQuery({
         queryKey: ['addClass', user?.email],
         queryFn: async () => {
-            const data = await fetch(`http://localhost:5000/addcls?email=${user?.email}`)
+            const data = await fetch(`http://localhost:5000/addcls?email=${user?.email}`,{
+                headers:{
+                    authorization:`bearer ${token}`
+                }
+            })
             return data.json()
         }
     })

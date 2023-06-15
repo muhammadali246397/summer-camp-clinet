@@ -14,6 +14,7 @@ import PostClass from "../Pages/Dashboard/InstructorDash/PostClass/PostClass";
 import AllInstructor from "../Pages/Instructor/AllInstructor";
 import MyClass from "../Pages/Dashboard/InstructorDash/MyClass/MyClass";
 import ManageUser from "../Pages/Dashboard/AdminDash/ManageUser/ManageUser";
+import ManageClass from "../Pages/Dashboard/AdminDash/ManageClass/ManageClass";
 
   const router = createBrowserRouter([
     {
@@ -70,6 +71,10 @@ import ManageUser from "../Pages/Dashboard/AdminDash/ManageUser/ManageUser";
         {
           path:'dashborad/manageuser',
           element:<ManageUser></ManageUser>
+        },
+        {
+          path:'dashborad/manageclass',
+          element:<ManageClass></ManageClass>
         }
       ]
     }

@@ -22,7 +22,7 @@ const DashLayout = () => {
         <div>
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content w-4/5 mx-auto">
+                <div className="drawer-content mx-10">
                     <Outlet></Outlet>
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
@@ -34,7 +34,7 @@ const DashLayout = () => {
                                 admin?
                                 <>
                                     <li style={{ marginBottom: '10px' }}><NavLink className='font-bold text-orange-800' to='dashborad/inshome'><FaRegListAlt></FaRegListAlt>INSTRUCTOR HOME</NavLink></li>
-                                    <li style={{ marginBottom: '10px' }}><NavLink className='font-bold text-orange-800' to='dashborad/macageclass'><FaBookmark></FaBookmark> MANAGE CLASSES</NavLink></li>
+                                    <li style={{ marginBottom: '10px' }}><NavLink className='font-bold text-orange-800' to='dashborad/manageclass'><FaBookmark></FaBookmark> MANAGE CLASSES</NavLink></li>
                                     <li style={{ marginBottom: '10px' }}><NavLink className='font-bold text-orange-800' to='dashborad/manageuser'><FaRegListAlt></FaRegListAlt> MANAGE USER</NavLink></li>
                                   
                                 </> 

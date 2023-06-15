@@ -9,7 +9,7 @@ const AllInstructor = () => {
     const { data: instructors = [] } = useQuery({
         queryKey: ['instructors'],
         queryFn: async () => {
-            const result = await fetch('http://localhost:5000/allclass')
+            const result = await fetch('http://localhost:5000/postclasses?status=approved')
             return result.json()
         }
     })

@@ -5,7 +5,7 @@ import Card from '../../Share/Card/Card';
 const PopularClass = () => {
     const [classes,setClasses] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:5000/class")
+        fetch("http://localhost:5000/postclasses?status=approved")
         .then(res => res.json())
         .then(data => setClasses(data))
     },[])

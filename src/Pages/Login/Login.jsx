@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 
 const Login = () => {
     const navigate = useNavigate();
-    const {signIn} = useContext(AuthContext)
+    const {signIn,googlesignin} = useContext(AuthContext)
     const { register,reset, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         signIn(data.email,data.password)
@@ -27,6 +27,19 @@ const Login = () => {
         .catch(error => console.log(error))
     };
     console.log(errors);
+    const googlelogin = () => {
+        googlesignin()
+        .then(res => {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Login successfully',
+                showConfirmButton: false,
+                timer: 1000
+              })
+              navigate('/')
+        })
+    }
 
     return (
         <div>
@@ -60,7 +73,7 @@ const Login = () => {
                             
                         </div>
                        <div className='text-center'>
-                       <button className='btn btn-circle btn-outline hover:text-orange-600'><FaGoogle></FaGoogle></button>
+                       <button onClick={googlelogin} className='btn btn-circle btn-outline hover:text-orange-600'><FaGoogle></FaGoogle></button>
                        </div>
                     </div>
                 </div>

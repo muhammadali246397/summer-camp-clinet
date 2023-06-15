@@ -17,7 +17,7 @@ const Signup = () => {
             console.log(user.email)
             updateUserProfile(data.name,data.photo)
             .then(() => {
-                const userInfo = {userEmail:user.email,name:user.displayName}
+                const userInfo = {userEmail:user.email, role:"student",name:user.displayName}
 
                 fetch('http://localhost:5000/users',{
                     method:"POST",
@@ -53,7 +53,7 @@ const Signup = () => {
         googlesignin()
         .then((result ) => {
             const logedinUser = result.user;
-            const userInfo = {userEmail:logedinUser.email,name:logedinUser.displayName}
+            const userInfo = {userEmail:logedinUser.email,role:"student",name:logedinUser.displayName}
             console.log(userInfo)
             fetch('http://localhost:5000/users',{
                 method:"POST",
@@ -73,6 +73,7 @@ const Signup = () => {
                         showConfirmButton: false,
                         timer: 1000
                       })
+                      navigate('/')
                 }
             })
         })

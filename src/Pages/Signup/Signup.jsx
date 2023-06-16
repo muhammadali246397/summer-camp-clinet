@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import log from '../../assets/login/logbg.png'
 import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 
 const Signup = () => {
     const navigate = useNavigate();
+    const [confirmpass, setConfirmPass] = useState('');
     const {createUser, updateUserProfile,googlesignin} = useContext(AuthContext)
     const { register,reset, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
@@ -81,6 +82,17 @@ const Signup = () => {
         .catch(error => console.log(error))
     }
     
+    const validateConfirmPassword = (value) => {
+        const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{6,})/;
+        if (!passwordRegex.test(value)) {
+            return 'Password must be at least 6 characters long, contain one capital letter, and one special character';
+          }
+        if (value !== confirmpass) {
+            return 'Passwords do not match';
+          }
+          return true;
+    };
+
     return (
         <div>
             <div className="" style={{ backgroundImage: `url(${log})`, backgroundRepeat: 'no-repeat' }}>
@@ -111,15 +123,16 @@ const Signup = () => {
                                     <label className="label">
                                         <span className="label-text font-bold text-lg">Password <span className='text-warning'>*</span> </span>
                                     </label>
-                                    <input className="input input-bordered w-full " type="password" placeholder="Name..." {...register("password", { required: true, maxLength: 80 })} />
-                                    {errors.password && <span>This field is required</span>}
+                                    <input className="input input-bordered w-full " type="password" placeholder="Name..." {...register("password", { required: true, maxLength: 80 ,validate:validateConfirmPassword})} />
+                                    {errors.password && <span className='text-warning'>{errors.password.message}</span>}
                                 </div>
                                 <div style={{width:'270px'}} className="form-control">
                                     <label className="label">
                                         <span className="label-text font-bold text-lg">Confirm Password <span className='text-warning'>*</span> </span>
                                     </label>
-                                    <input className="input input-bordered w-full " type="password" placeholder="Confirm Password..." {...register("confirmpass", { required: true, maxLength: 80 })} />
-                                    {errors.confirmpass && <span>This field is required</span>}
+                                    <input className="input input-bordered w-full " type="password" placeholder="Confirm Password..." {...register("confirmpass", { required: true, maxLength: 80,validate:validateConfirmPassword })}
+                                    onChange={(e) => setConfirmPass(e.target.value)} />
+                                    {/* {errors.confirmpass && <span>password not matching</span>} */}
                                 </div>
                             </div>
                             <div className="form-control w-full">

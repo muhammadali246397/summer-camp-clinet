@@ -11,7 +11,7 @@ const SelectedClasses = () => {
     const { data: addClass = [], refetch } = useQuery({
         queryKey: ['addClass', user?.email],
         queryFn: async () => {
-            const data = await fetch(`http://localhost:5000/addcls?email=${user?.email}`,{
+            const data = await fetch(`https://assignment-twelve-server-muhammadali246397.vercel.app/addcls?email=${user?.email}`,{
                 headers:{
                     authorization:`bearer ${token}`
                 }
@@ -32,7 +32,7 @@ const SelectedClasses = () => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/addclass/${id}`,{
+                fetch(`https://assignment-twelve-server-muhammadali246397.vercel.app/addclass/${id}`,{
                     method:'DELETE'
                 })
                 .then(res => res.json())

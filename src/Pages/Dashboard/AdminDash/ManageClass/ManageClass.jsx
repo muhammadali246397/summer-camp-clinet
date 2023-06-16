@@ -8,7 +8,7 @@ const ManageClass = () => {
     const { data: allclasses = [], refetch } = useQuery({
         queryKey: ['allclasses'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/postclass',{
+            const res = await fetch('https://assignment-twelve-server-muhammadali246397.vercel.app/postclass',{
                 headers:{
                     authorization:`bearer ${token}`
                 }

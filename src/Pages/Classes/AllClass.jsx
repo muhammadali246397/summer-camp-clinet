@@ -8,7 +8,7 @@ const AllClass = () => {
     const { data: classes = [] } = useQuery({
         queryKey: ['classes'],
         queryFn: async () => {
-            const result = await fetch('http://localhost:5000/postclasses?status=approved')
+            const result = await fetch('https://assignment-twelve-server-muhammadali246397.vercel.app/postclassespage?status=approved')
             return result.json()
         }
     })

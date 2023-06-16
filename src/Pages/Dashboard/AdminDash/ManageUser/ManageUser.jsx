@@ -5,11 +5,15 @@ import Swal from 'sweetalert2';
 import TableBody from './TableBody';
 
 const ManageUser = () => {
-   
+   const token = localStorage.getItem('access-token')
     const { data: users = [],refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const result = await fetch('http://localhost:5000/users')
+            const result = await fetch('https://assignment-twelve-server-muhammadali246397.vercel.app/users',{
+                headers:{
+                    authorization:`bearer ${token}`
+                }
+            })
             return result.json()
         }
     })
@@ -36,7 +40,7 @@ const ManageUser = () => {
                     </thead>
                     <tbody>
                         {
-                            users.map((user,index) => <TableBody
+                            users?.map((user,index) => <TableBody
                             key={user._id}
                             user={user}
                             refetch={refetch}

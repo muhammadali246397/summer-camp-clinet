@@ -11,7 +11,7 @@ const TableBody = ({user,refetch,index}) => {
        
        
         const data = user._id
-        fetch(`http://localhost:5000/users/admin/${data}`,{
+        fetch(`https://assignment-twelve-server-muhammadali246397.vercel.app/users/admin/${data}`,{
             method:'PATCH'
         })
         .then(res => res.json())
@@ -37,7 +37,7 @@ const TableBody = ({user,refetch,index}) => {
 
         console.log(user)
         const data = user._id
-        fetch(`http://localhost:5000/users/instructor/${data}`,{
+        fetch(`https://assignment-twelve-server-muhammadali246397.vercel.app/users/instructor/${data}`,{
             method:'PATCH'
         })
         .then(res => res.json())

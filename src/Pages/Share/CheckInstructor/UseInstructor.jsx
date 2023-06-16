@@ -8,7 +8,7 @@ const UseInstructor = () => {
  const {data: isInstructor,isLoading} = useQuery({
     queryKey:['isInstructor',user?.email],
     queryFn:async() => {
-        const res = await fetch(`http://localhost:5000/users/checkinstructor/${user?.email}`,{
+        const res = await fetch(`https://assignment-twelve-server-muhammadali246397.vercel.app/users/checkinstructor/${user?.email}`,{
             headers:{
                 authorization:`bearer ${token}`
             }

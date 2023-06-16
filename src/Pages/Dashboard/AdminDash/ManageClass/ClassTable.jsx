@@ -15,7 +15,7 @@ const ClassTable = ({ classes, index, refetch }) => {
 
 
     const ClassApprove = (id) => {
-        fetch(`http://localhost:5000/postclassapprove/${id}`, {
+        fetch(`https://assignment-twelve-server-muhammadali246397.vercel.app/postclassapprove/${id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -36,7 +36,7 @@ const ClassTable = ({ classes, index, refetch }) => {
     }
 
     const ClassDeind = (id) => {
-        fetch(`http://localhost:5000/postclassdained/${id}`, {
+        fetch(`https://assignment-twelve-server-muhammadali246397.vercel.app/postclassdained/${id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

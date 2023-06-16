@@ -19,7 +19,7 @@ const ClassCard = ({ ins }) => {
         console.log(cls)
 
         if (user) {
-            fetch('http://localhost:5000/addcls', {
+            fetch('https://assignment-twelve-server-muhammadali246397.vercel.app/addcls', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

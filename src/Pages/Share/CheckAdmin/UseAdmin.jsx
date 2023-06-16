@@ -8,7 +8,7 @@ const UseAdmin = () => {
  const {data: isAdmin,isLoading} = useQuery({
     queryKey:['isAdmin',user?.email],
     queryFn:async() => {
-        const res = await fetch(`http://localhost:5000/users/checkadmin/${user?.email}`,{
+        const res = await fetch(`https://assignment-twelve-server-muhammadali246397.vercel.app/users/checkadmin/${user?.email}`,{
             headers:{
                 authorization:`bearer ${token}`
             }

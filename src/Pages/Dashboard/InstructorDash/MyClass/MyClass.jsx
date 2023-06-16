@@ -9,7 +9,7 @@ const MyClass = () => {
     const token = localStorage.getItem('access-token');
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/myclass?email=${user?.email}`,{
+        axios.get(`https://assignment-twelve-server-muhammadali246397.vercel.app/myclass?email=${user?.email}`,{
             headers:{
                 authorization:`bearer ${token}`
             }

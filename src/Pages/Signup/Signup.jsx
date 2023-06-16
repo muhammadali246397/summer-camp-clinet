@@ -19,7 +19,7 @@ const Signup = () => {
             .then(() => {
                 const userInfo = {userEmail:user.email, role:"student",name:user.displayName}
 
-                fetch('http://localhost:5000/users',{
+                fetch('https://assignment-twelve-server-muhammadali246397.vercel.app/users',{
                     method:"POST",
                     headers:{
                         'content-type':'application/json'
@@ -55,7 +55,7 @@ const Signup = () => {
             const logedinUser = result.user;
             const userInfo = {userEmail:logedinUser.email,role:"student",name:logedinUser.displayName}
             console.log(userInfo)
-            fetch('http://localhost:5000/users',{
+            fetch('https://assignment-twelve-server-muhammadali246397.vercel.app/users',{
                 method:"POST",
                 headers:{
                     'content-type':'application/json'

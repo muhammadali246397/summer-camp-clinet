@@ -11,7 +11,7 @@ const PostClass = () => {
     const onSubmit = (data) => {
        const {className,available, classImg, email,status, instructorName, price} = data
         const result = {className,available, classImg,status, email, instructorName, price,image:user?.photoURL}
-        fetch('http://localhost:5000/postclass',{
+        fetch('https://assignment-twelve-server-muhammadali246397.vercel.app/postclass',{
             method:"POST",
             headers:{
                 "content-type":"application/json"

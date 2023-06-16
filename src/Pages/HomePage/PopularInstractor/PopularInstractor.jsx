@@ -5,7 +5,7 @@ import Card from '../../Share/Card/Card';
 const PopularInstractor = () => {
     const [instractors, setInstractor] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:5000/postclasses?status=approved")
+        fetch("https://assignment-twelve-server-muhammadali246397.vercel.app/postclasses?status=approved")
         .then(res => res.json())
         .then(data => setInstractor(data))
     },[])

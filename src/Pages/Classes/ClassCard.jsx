@@ -17,6 +17,7 @@ const ClassCard = ({ ins }) => {
     const addClass = (cls) => {
         const classes = { clasid: _id, available, userEmail: user?.email, classImg, className, email, image, instructorName, price }
         console.log(cls)
+        
 
         if (user) {
             fetch('https://assignment-twelve-server-muhammadali246397.vercel.app/addcls', {

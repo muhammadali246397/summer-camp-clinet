@@ -16,7 +16,7 @@ const PopularInstractor = () => {
             title={"Our Popular Instractors"}
             ></Title>
 
-            <div className='grid grid-cols-3'>
+            <div className='md:grid grid-cols-3 p-4'>
                 {
                     instractors.map(instractor => <Card 
                     key={instractor._id}

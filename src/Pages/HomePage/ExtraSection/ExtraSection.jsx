@@ -16,14 +16,14 @@ const ExtraSection = () => {
     return (
         <div style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }} className='my-20 h-[90vh]'>
             <div className=''>
-                <div className='w-1/2 ml-auto p-10'>
+                <div className='md:w-1/2 md:ml-auto p-10'>
 
                     <p className='mt-10'>Team</p>
                     <h2 className='text-5xl font-bold my-10'>A Legendary <br /> Community</h2>
                     <p>
                         At Crown Art School we are teaching different art techniques to students of all ages. During my lessons I try to bring out the inner artists of students to help build their skills.</p>
                 </div>
-                <div className='w-1/2 ml-auto'>
+                <div className='md:w-1/2 md:ml-auto p-2'>
                     <Swiper
                         slidesPerView={3}
                         spaceBetween={30}
@@ -31,7 +31,7 @@ const ExtraSection = () => {
                             clickable: true,
                         }}
                         modules={[Pagination]}
-                        className="mySwiper w-1/2 text-end "
+                        className="mySwiper"
                     >
                         <SwiperSlide>
                         <img src={img1} alt="" />
